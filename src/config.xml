@@ -19,6 +19,8 @@
 
     <platform name="android">
         <!-- Allow access to file resources -->
+        <preference name="android-minSdkVersion" value="22" />
+        <preference name="android-targetSdkVersion" value="33" />
         <access origin="file://*/*" />
         <allow-intent href="content:///*" />
     </platform>
