@@ -21,11 +21,6 @@
         <!-- Allow access to file resources -->
         <access origin="file://*/*" />
         <allow-intent href="content:///*" />
-        <!-- Permissions -->
-        <!-- 
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/uses-permission">
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        </edit-config> -->
     </platform>
 
     <!-- Other configurations -->
