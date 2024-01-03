@@ -6,10 +6,26 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
-    <!-- Plugin List -->
+    <!-- Whitelist and File Access -->
+    <allow-navigation href="file://*/*" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.0.0" />
     <plugin name="cordova-plugin-file" spec="^6.0.2" />
     <plugin name="cordova-plugin-filechooser" spec="^1.2.0" />
+    <plugin name="cordova-plugin-filepath" spec="^1.0.0" />
+
+    <platform name="android">
+        <!-- Allow access to file resources -->
+        <access origin="file://*/*" />
+        <allow-intent href="content:///*" />
+        <!-- Permissions -->
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/uses-permission">
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </edit-config>
+    </platform>
+
+    <!-- Other configurations -->
 </widget>

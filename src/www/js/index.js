@@ -1,8 +1,6 @@
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
+
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
@@ -11,7 +9,12 @@ function onDeviceReady() {
     document.getElementById('pickFile').addEventListener('click', function() {
         // For Android
         fileChooser.open(function(uri) {
-            player.src({type: 'video/mp4', src: uri});
+            // Convert URI to a native file path
+            window.FilePath.resolveNativePath(uri, function(nativePath) {
+                player.src({ type: 'video/mp4', src: nativePath });
+            }, function(error) {
+                console.error("Error resolving file path: ", error);
+            });
         });
     });
 }
